@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='haha.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+     <header>
+      <nav>
+        <div class="logo">
+          <div><image src= "{{ url_for('static',filename='book.png') }}" height="50"></div>
+          <div><h4 id="namee">Read Next</h4></div>
+        </div>
+
+        <ul class="nav-links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/Authors">Authors</a></li>
+					<li><a href="/About">About</a></li>
+				</ul>
+      </nav>
+    </header> 
+
+        {% block content %}BOOKS{% endblock %}
+
+
+        <footer class="footer">
+          <p>{% for i in totgenre %}
+                  <a href="{{ url_for('gen',genre=i) }}" name='please' value="{{i}}"> {{ i }} </a>
+  
+                  {% if not totgenre.last %},{% endif %}
+              {% endfor %}
+          </p>
+          
+        </footer>
+        
+      </body>
+        
+</html>

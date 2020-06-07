@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}resultsSSS{% endblock %}
+
+
+{% block content %}
+<style>body{
+    background-image: url(https://i.pinimg.com/564x/58/a2/e9/58a2e91411e7c85ebc35923b825b12aa.jpg);
+      background-size: auto;
+      background-position: center;
+    
+    }
+    
+    .footer{
+        margin-top: 20%;
+        background-color: rgb(41, 23, 23);
+    }
+</style>
+    
+    </style>
+
+    <h2 style="padding-top: 30px; padding-bottom: 40px;">{{headd}}</h2>
+
+        {% for i in range(totauthor|length) %}
+
+    <div style="
+    width: 400px;
+    display: grid;
+    display: inline-block;
+    grid-template-columns: 220px 500px;
+    background: rgba(90, 77, 77, 0.9);
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);">
+    <h3>{{totauthor[i]}}</h3>
+        </div><br><br>
+        {% endfor %}
+
+        {% endblock %}
