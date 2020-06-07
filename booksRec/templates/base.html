@@ -26,7 +26,7 @@
 
         <footer class="footer">
           <p>{% for i in totgenre %}
-                  <a href="{{ url_for('gen',genre=i) }}" name='please' value="{{i}}"> {{ i }} </a>
+                  <a href="{{ url_for('gen',genre=i) }}" name='please' value="{{i}}" style="text-decoration: none; color: bisque;"> {{ i }} </a>
   
                   {% if not totgenre.last %},{% endif %}
               {% endfor %}

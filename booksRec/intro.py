@@ -4,11 +4,8 @@ import numpy as np # linear algebra
 import pandas as pd
 from bookrec import authors_recommendations,corpus_recommendations,totgenre,genre_based,books
 
-
 app = Flask(__name__)
-
 books = pd.read_csv(r'C:\sanju\nptel\booksRec\templates\all.csv', encoding = "UTF-8")
-
 @app.route('/',methods=['GET','POST'])
 def home():
     if request.method=='POST':
@@ -29,7 +26,7 @@ def gen(genre):
 
 
 
-@app.route('/no/yes/<ty>',methods=['GET','POST'])
+@app.route('/books/yes/<ty>',methods=['GET','POST'])
 def index(ty):
     if request.method=='GET':
         k=(corpus_recommendations(ty))
@@ -43,7 +40,7 @@ def authors():
 
 @app.route('/About')
 def about():
-    return render_template('norm.html',totauthor=['helloo thankssss'],totgenre=totgenre) 
+    return render_template('norm.html',totauthor=['This is a website for book reccomendation (based on Machine Learning using python), and backend done using.'],totgenre=totgenre) 
 
 
 
