@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='imgzlide.css') }}">
+</head>
+<body>
+<div class="hasimg">
+    <div class="mySlide fade">
+        <img src="{{ url_for('static',filename='1pic.png') }}">
+        <div class="text">Type a book you have read, in the search bar</div>
+    </div>
+
+    <div class="mySlide fade">
+        <img src="{{ url_for('static',filename='2pic.png') }}">
+        <div class="text">Here the results of the reccomendations<br> will be displayed for you</div>
+    </div>
+
+    <div class="mySlide fade">
+        <img src="{{ url_for('static',filename='3pic.png') }}">
+        <div class="text">To know the total authors,<br> click on the author tab on the nav bar<br>
+        <a href="/" style="text-decoration: none;
+        background-color: rgb(163, 230, 174); box-shadow: 0px 10px 5px rgba(0,0,0,0.7);
+        border-radius: 10%;
+        color: rgb(38, 48, 56);">go home?</a>
+        </div>
+    </div>
+
+    <div class="prev" onclick="plusSlides(-1)">
+        &#10094;
+    </div>
+
+    <div class="next" onclick="plusSlides(1)">
+        &#10095;
+    </div>
+
+</div>
+
+<script>
+    var slideIndex=1
+    showSlides(slideIndex);
+
+
+    function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n)
+{
+
+    var slides = document.getElementsByClassName('mySlide');//3 of the div elements stored in variable
+    if (n > slides.length) {slideIndex = 1;}    
+  if (n < 1) {slideIndex = slides.length;}
+
+    for(i=0;i<slides.length;i++) {
+    slides[i].style.display="none";
+    }
+    
+    slides[slideIndex-1].style.display = "block"; 
+}
+
+</script>
+
+</body>
+</html>

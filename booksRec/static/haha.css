@@ -102,7 +102,6 @@ nav{
 .logo{
     color:rgb(197, 193, 193);
     text-transform: uppercase;
-    letter-spacing: 5px;
     font-size: 20px;
 }
 
@@ -112,3 +111,7 @@ nav{
     left: 65px;
     padding-right: 15px;
 }
+
+@media only screen and (max-width: 300px) {
+    nav,#namee {font-size: 11px}
+  }

@@ -42,7 +42,9 @@ def authors():
 def about():
     return render_template('norm.html',totauthor=['This is a website for book reccomendation (based on Machine Learning using python), and backend done using.'],totgenre=totgenre) 
 
-
+@app.route("/tut", methods=["POST", "GET"])
+def tut():
+    return render_template("imgslider.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
