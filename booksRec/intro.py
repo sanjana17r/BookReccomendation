@@ -12,7 +12,7 @@ def home():
         k=request.form['title']
         return redirect(url_for('index',ty=k))      
     else:
-        return render_template('index.html',totgenre=totgenre)
+        return render_template("index.html",bname=(books['name.1']),totgenre=totgenre)
         
 
 
@@ -32,6 +32,7 @@ def index(ty):
         k=(corpus_recommendations(ty))
         return render_template("imp.html",names=list(k[0]),links=list(k[2]),iim=list(k[1]),autho=list(k[3]),totgenre=totgenre,headd='Recommendations :')  
     else:
+        print(list(books['name.1']))
         return render_template('index.html',totgenre=totgenre)    
 
 @app.route('/Authors')
@@ -40,11 +41,13 @@ def authors():
 
 @app.route('/About')
 def about():
-    return render_template('norm.html',totauthor=['This is a website for book reccomendation (based on Machine Learning using python), and backend done using.'],totgenre=totgenre) 
+    return render_template('norm.html',totauthor=['This is a website for book reccomendation (based on Machine Learning using python), and backend done using flask.'],totgenre=totgenre) 
 
 @app.route("/tut", methods=["POST", "GET"])
 def tut():
     return render_template("imgslider.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -3,34 +3,56 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
+
 <style>
     .footer{
         margin-top: 20%;
     }
 </style>
+
 <body style='background-image: url(https://images2.alphacoders.com/261/thumb-1920-26102.jpg);'>
+    <div class="intro">
+        <h1 style="padding-top: 60px;">Discover books you'll love!</h1>
+        <p> <h3>
+            Enter a book you like and the site will analyse our database to provide<br>
+            book recommendations and suggestions for what to read next.
+        </h3>
+        </p>
+    </div>
 
 
-<div class="intro">
-    <h1 style="padding-top: 60px;">Discover books you'll love!</h1>
-    <p> <h3>
-        Enter a book you like and the site will analyse our database to provide<br>
-        book recommendations and suggestions for what to read next.
-    </h3>
-    </p>
-</div>
-
-
-<form action='#' method='post' style="font-size: x-large;">
-    <p> </p>
-    <p>Enter book:</p>
-    <p><input type="text" name="title" style="font-size: large; opacity: 0.4;" placeholder="Enter book name"/></p> <!--here,input given by user is named as variable title, 
-later which is used and processed in python-->
-    <p><input type="submit" value="Get Reccomendation" style="font-size: large;"/></p>
-</form>
+    <form action='#' method='post' style="font-size: x-large;">
+        <p> </p>
+        <p>Enter book:</p>
+        <template id="resultstemplate">
+    
+            {% for i in bname %}
+            <option>{{i}}</option>
+            {% endfor %}
+            
+        </template>
+        <input type="text" name="title" id="title" style="font-size: large; background-color: transparent; border-color: black;" placeholder="Enter book name" list="searchresults" autocomplete="off" />
+        <datalist id="searchresults"></datalist>
+        <p><input type="submit" value="Get Reccomendation" style="font-size: large;"/></p>
+    </form>
+    
+        <script>
+    
+    var search = document.querySelector('#title');
+    var results = document.querySelector('#searchresults');
+    var templateContent = document.querySelector('#resultstemplate').content;
+    search.addEventListener('keyup', function handler(event) {
+        while (results.children.length) results.removeChild(results.firstChild);
+        var inputVal = new RegExp(search.value.trim(), 'i');
+        var clonedOptions = templateContent.cloneNode(true);
+        var set = Array.prototype.reduce.call(clonedOptions.children, function searchFilter(frag, el) {
+            if (inputVal.test(el.textContent) && frag.children.length < 5) frag.appendChild(el);
+            return frag;
+        }, document.createDocumentFragment());
+        results.appendChild(set);
+    });
+    
+        </script>
 
 {% endblock %}
-
-
-</body>
-
