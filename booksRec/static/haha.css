@@ -114,5 +114,5 @@ nav{
 }
 
 @media only screen and (max-width: 300px) {
-    nav,#namee {font-size: 11px}
+    nav {font-size: 11px}
   }

@@ -20,7 +20,7 @@ def home():
 def gen(genre):
     if request.method=='GET':
         k=genre_based(genre)
-        return render_template("imp.html",names=list(k[0]),links=list(k[1]),iim=list(k[2]),autho=list(k[3]),totgenre=totgenre,headd=genre)   
+        return render_template("imp.html",names=list(k[0]),links=list(k[1]),iim=list(k[2]),autho=list(k[3]),lin=list(k[4]),totgenre=totgenre,headd=genre)   
     else:
         return render_template('index.html',totgenre=totgenre)
 
@@ -30,7 +30,7 @@ def gen(genre):
 def index(ty):
     if request.method=='GET':
         k=(corpus_recommendations(ty))
-        return render_template("imp.html",names=list(k[0]),links=list(k[2]),iim=list(k[1]),autho=list(k[3]),totgenre=totgenre,headd='Recommendations :')  
+        return render_template("imp.html",names=list(k[0]),links=list(k[2]),iim=list(k[1]),autho=list(k[3]),lin=list(k[4]),totgenre=totgenre,headd='Recommendations :')  
     else:
         print(list(books['name.1']))
         return render_template('index.html',totgenre=totgenre)    
@@ -46,7 +46,6 @@ def about():
 @app.route("/tut", methods=["POST", "GET"])
 def tut():
     return render_template("imgslider.html")
-
 
 
 if __name__ == "__main__":

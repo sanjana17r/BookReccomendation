@@ -67,14 +67,16 @@ def corpus_recommendations(title):
     imgn=titles['image-src']
     bookn=titles['booklink-href']
     auth=titles['author']
-    return (titlesn[:20],imgn[:20],bookn[:20],auth[:20])
+    l=titles['rating']
+    return (titlesn[:20],imgn[:20],bookn[:20],auth[:20],l[:20])
 
 def genre_based(g):
     k=books.loc[books['genre1']==g, 'name.1']
     l=books.loc[books['genre1']==g, 'image-src']
     m=books.loc[books['genre1']==g, 'booklink-href']
     n=books.loc[books['genre1']==g,'author']
-    return (k,m,l,n)
+    o=books.loc[books['genre1']==g,'rating']
+    return (k,m,l,n,o)
 
 totgenre = (books['genre1'].dropna()).reset_index(drop=True)
 totgenre=list(set(totgenre))
